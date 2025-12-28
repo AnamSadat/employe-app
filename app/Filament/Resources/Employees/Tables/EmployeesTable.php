@@ -3,8 +3,11 @@
 namespace App\Filament\Resources\Employees\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class EmployeesTable
@@ -13,13 +16,20 @@ class EmployeesTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('first_name'),
+                TextColumn::make('last_name'),
+                TextColumn::make('email'),
+                TextColumn::make('phone'),
+                TextColumn::make('position'),
+                TextColumn::make('salary')
             ])
             ->filters([
                 //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make()
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
